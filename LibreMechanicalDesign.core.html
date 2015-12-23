@@ -8,7 +8,7 @@
     
     <title>LibreMechanicalDesign.core package &mdash; LibreMechanicalDesign dev documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,8 @@
     <link rel="next" title="LibreMechanicalDesign.debug package" href="LibreMechanicalDesign.debug.html" />
     <link rel="prev" title="LibreMechanicalDesign package" href="LibreMechanicalDesign.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -44,49 +44,29 @@
         <li class="right" >
           <a href="LibreMechanicalDesign.html" title="LibreMechanicalDesign package"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="LibreMechanicalDesign.html" accesskey="U">LibreMechanicalDesign package</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="LibreMechanicalDesign.html" accesskey="U">LibreMechanicalDesign package</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="libremechanicaldesign-core-package">
 <h1>LibreMechanicalDesign.core package<a class="headerlink" href="#libremechanicaldesign-core-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-core.container">
-<span id="core-container-module"></span><h2>core.container module<a class="headerlink" href="#module-core.container" title="Permalink to this headline">¶</a></h2>
-<p>Created on 20 déc. 2015</p>
-<p>&#64;author: aurelien</p>
-<dl class="class">
-<dt id="core.container.MyClass">
-<em class="property">class </em><tt class="descclassname">core.container.</tt><tt class="descname">MyClass</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="_modules/core/container.html#MyClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.container.MyClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
-<dl class="docutils">
-<dt>This handles multiple properties of a mechanical object such as :</dt>
-<dd><ul class="first last simple">
-<li>geometry</li>
-<li>materials</li>
-<li>external forces</li>
-<li>internal constrains</li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="core-container-module">
+<h2>core.container module<a class="headerlink" href="#core-container-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.query">
 <span id="core-query-module"></span><h2>core.query module<a class="headerlink" href="#module-core.query" title="Permalink to this headline">¶</a></h2>
-<p>Created on 20 déc. 2015</p>
-<p>&#64;author: aurelien</p>
 <dl class="function">
 <dt id="core.query.q_string">
-<tt class="descclassname">core.query.</tt><tt class="descname">q_string</tt><big>(</big><em>query_string</em><big>)</big><a class="reference internal" href="_modules/core/query.html#q_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.q_string" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">core.query.</code><code class="descname">q_string</code><span class="sig-paren">(</span><em>query_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/core/query.html#q_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.q_string" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Split a query string into keywords and interprate boolean operators</dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
@@ -98,7 +78,7 @@
 </tbody>
 </table>
 </dd>
-<dt>Output <span class="classifier-delimiter">:</span> <span class="classifier"></span></dt>
+<dt>Output :</dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -116,14 +96,6 @@
 </div>
 <div class="section" id="module-core.utils">
 <span id="core-utils-module"></span><h2>core.utils module<a class="headerlink" href="#module-core.utils" title="Permalink to this headline">¶</a></h2>
-<p>Created on 20 déc. 2015</p>
-<p>&#64;author: aurelien</p>
-<dl class="function">
-<dt id="core.utils.replaceunicode">
-<tt class="descclassname">core.utils.</tt><tt class="descname">replaceunicode</tt><big>(</big><em>self</em>, <em>data</em><big>)</big><a class="reference internal" href="_modules/core/utils.html#replaceunicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.utils.replaceunicode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fix the lack of support of Unicode characters in CSV module</p>
-</dd></dl>
-
 </div>
 <div class="section" id="module-core">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core" title="Permalink to this headline">¶</a></h2>
@@ -134,13 +106,13 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">LibreMechanicalDesign.core package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-core.container">core.container module</a></li>
+<li><a class="reference internal" href="#core-container-module">core.container module</a></li>
 <li><a class="reference internal" href="#module-core.query">core.query module</a></li>
 <li><a class="reference internal" href="#module-core.utils">core.utils module</a></li>
 <li><a class="reference internal" href="#module-core">Module contents</a></li>
@@ -154,12 +126,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="LibreMechanicalDesign.debug.html"
                         title="next chapter">LibreMechanicalDesign.debug package</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/LibreMechanicalDesign.core.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/LibreMechanicalDesign.core.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -176,7 +150,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -191,13 +165,13 @@
         <li class="right" >
           <a href="LibreMechanicalDesign.html" title="LibreMechanicalDesign package"
              >previous</a> |</li>
-        <li><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="LibreMechanicalDesign.html" >LibreMechanicalDesign package</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="LibreMechanicalDesign.html" >LibreMechanicalDesign package</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>

@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to .’s documentation! &mdash; LibreMechanicalDesign dev documentation</title>
+    <title>Welcome to LibreMecaDesign documentation! &mdash; LibreMecaDesign dev documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,11 +23,11 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="LibreMechanicalDesign dev documentation" href="#" />
-    <link rel="next" title="LibreMechanicalDesign package" href="LibreMechanicalDesign.html" /> 
+    <link rel="top" title="LibreMecaDesign dev documentation" href="#" />
+    <link rel="next" title="LibreMechanicalDesign : Developpers reference" href="DEV.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -37,61 +37,111 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="LibreMechanicalDesign.html" title="LibreMechanicalDesign package"
+          <a href="DEV.html" title="LibreMechanicalDesign : Developpers reference"
              accesskey="N">next</a> |</li>
-        <li><a href="#">LibreMechanicalDesign dev documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">LibreMecaDesign dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
-  <div class="section" id="welcome-to-s-documentation">
-<h1>Welcome to .&#8217;s documentation!<a class="headerlink" href="#welcome-to-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+  <div class="section" id="welcome-to-libremecadesign-documentation">
+<h1>Welcome to LibreMecaDesign documentation!<a class="headerlink" href="#welcome-to-libremecadesign-documentation" title="Permalink to this headline">¶</a></h1>
+<p>LibreMecaDesign is a multi-level library to solve mechanical engineering problems and to help engineers to choose materials for their design. It will :</p>
+<ul class="simple">
+<li>describe mechanical objects with properties :<ul>
+<li>geometric properties : dimensions, section area, centroids, momentums, etc.</li>
+<li>materials properties : elasticity, rigidity, tensile strength, Poissin&#8217;s ration, etc.</li>
+<li>external constrains : forces, momentums, reactions, etc.</li>
+<li>internal constrains : stress, strain, shear</li>
+</ul>
+</li>
+<li>supercharge these properties with symbolic equations and/or numeric values with units through modules :<ul>
+<li>beams</li>
+<li>shafts</li>
+<li>couplings</li>
+<li>bearings</li>
+<li>gears</li>
+<li>springs</li>
+<li>screws and bolts</li>
+<li>clutches and brakes</li>
+</ul>
+</li>
+<li>determine materials properties to solve equations or determine expected properties to chose materials, based on a extensive library</li>
+<li>gather all properties equations and all properties parameters to solve them :<ul>
+<li>symbolically to get an input/output relation parameter depending (for a third party use)</li>
+<li>formally to get an analytical result without numeric aproximations (if the problem is simple enough)</li>
+<li>numerically if the solution is not analytical, by optimization or finite elements</li>
+</ul>
+</li>
+</ul>
+<p>The whole software is intended to be used either as a library in scripts or through an upcoming GUI. Its main goal is to remain as simple and as light as possible, written in an objective way with extensible modules, and higher level methods built on lower level methods, in a multi-layer architecture where only inputs and outputs matter.</p>
+<p>Developpers &amp; users reference:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="LibreMechanicalDesign.html">LibreMechanicalDesign package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="LibreMechanicalDesign.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="LibreMechanicalDesign.core.html">LibreMechanicalDesign.core package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.core.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.core.html#module-core.container">core.container module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.core.html#module-core.query">core.query module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.core.html#module-core.utils">core.utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.core.html#module-core">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="LibreMechanicalDesign.debug.html">LibreMechanicalDesign.debug package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.debug.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.debug.html#module-debug.materials">debug.materials module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.debug.html#module-debug">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="LibreMechanicalDesign.gui.html">LibreMechanicalDesign.gui package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.gui.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.gui.html#gui-start-module">gui.start module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.gui.html#module-gui">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="LibreMechanicalDesign.lib.html">LibreMechanicalDesign.lib package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.lib.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.lib.html#module-lib.build">LibreMechanicalDesign.lib.build module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.lib.html#libremechanicaldesign-lib-geometry-module">LibreMechanicalDesign.lib.geometry module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.lib.html#module-lib.materials">LibreMechanicalDesign.lib.materials module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.lib.html#module-contents">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="LibreMechanicalDesign.modules.html">LibreMechanicalDesign.modules package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="LibreMechanicalDesign.modules.html#module-modules">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEV.html">LibreMechanicalDesign : Developpers reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DEV.intro.html">LibreMecaDesign : Developpers introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="DEV.intro.html#goal-and-purpose">Goal and purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DEV.intro.html#coding-philosophy">Coding Philosophy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DEV.intro.html#code-layers">Code layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-0-database">Layer 0 : database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-1-classes-and-container">Layer 1 : classes and container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-2-modules">Layer 2 : modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-3-solver">Layer 3 : solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-4-gui">Layer 4 : GUI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DEV.intro.html#layer-5-cad">Layer 5 : CAD</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="LibreMechanicalDesign.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LibreMechanicalDesign.html#module-LibreMechanicalDesign">LibreMechanicalDesign module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LibreMechanicalDesign.html#module-LibreMechanicalDesign">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Functions reference:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LMD.html">LibreMechanicalDesign package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="LMD.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="LMD.core.html">LibreMechanicalDesign.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LMD.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.core.html#module-core.container">core.container module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.core.html#module-core.query">core.query module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.core.html#module-core.utils">core.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.core.html#module-core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LMD.debug.html">LibreMechanicalDesign.debug package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LMD.debug.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.debug.html#module-debug.materials">debug.materials module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.debug.html#module-debug">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LMD.gui.html">LibreMechanicalDesign.gui package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LMD.gui.html#module-gui.start">gui.start module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LMD.lib.html">LibreMechanicalDesign.lib package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LMD.lib.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.lib.html#module-lib.build">LibreMechanicalDesign.lib.build module</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="LMD.lib.html#included-data">Included data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="LMD.lib.html#adding-data">Adding data</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.lib.html#module-lib.geometry">LibreMechanicalDesign.lib.geometry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.lib.html#module-lib.materials">LibreMechanicalDesign.lib.materials module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LMD.lib.html#module-lib">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LMD.modules.html">LibreMechanicalDesign.modules package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LMD.modules.html#module-modules">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -100,9 +150,9 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 
@@ -110,23 +160,27 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to .&#8217;s documentation!</a></li>
+<li><a class="reference internal" href="#">Welcome to LibreMecaDesign documentation!</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="LibreMechanicalDesign.html"
-                        title="next chapter">LibreMechanicalDesign package</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <p class="topless"><a href="DEV.html"
+                        title="next chapter">LibreMechanicalDesign : Developpers reference</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -143,7 +197,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -153,14 +207,14 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="LibreMechanicalDesign.html" title="LibreMechanicalDesign package"
+          <a href="DEV.html" title="LibreMechanicalDesign : Developpers reference"
              >next</a> |</li>
-        <li><a href="#">LibreMechanicalDesign dev documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">LibreMecaDesign dev documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>

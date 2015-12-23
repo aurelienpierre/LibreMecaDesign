@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>lib.build &mdash; LibreMechanicalDesign dev documentation</title>
+    <title>lib.build &mdash; LibreMecaDesign dev documentation</title>
     
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,11 +23,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="LibreMechanicalDesign dev documentation" href="../../index.html" />
+    <link rel="top" title="LibreMecaDesign dev documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,15 +36,15 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <h1>Source code for lib.build</h1><div class="highlight"><pre>
 <span class="c">#!/usr/bin/env python3</span>
@@ -55,10 +55,6 @@
 <span class="sd">You just need to call it without argument.</span>
 
 <span class="sd">.. warning:: Each new call of the module overwrite the previous database. Make a backup before.</span>
-
-<span class="sd">.. todo::</span>
-<span class="sd">    * update instead of overwriting previous database</span>
-<span class="sd">    * keep consistency if CSV columns headers don&#39;t match with database headers</span>
 
 <span class="sd">Included data</span>
 <span class="sd">-------------</span>
@@ -111,37 +107,46 @@
 <span class="sd">  </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
 <span class="n">CURRENT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
 <span class="n">PARENT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PARENT_PATH</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">sqlite3</span><span class="o">,</span> <span class="nn">csv</span><span class="o">,</span> <span class="nn">codecs</span>
+<span class="c">#TODO: update instead of overwriting previous database</span>
 
-<div class="viewcode-block" id="database_handle"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.database_handle">[docs]</a><span class="k">def</span> <span class="nf">database_handle</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+<span class="c">#TODO: keep consistency if CSV columns headers don&#39;t match with database headers</span>
+    
+<div class="viewcode-block" id="database_handle"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.database_handle">[docs]</a><span class="k">def</span> <span class="nf">database_handle</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create or overwrite the sqlite3 database and open a connection if it does.</span>
-<span class="sd">    </span>
+
 <span class="sd">    :param db: database filename</span>
 <span class="sd">    :type db: str</span>
 <span class="sd">    :return: connection socket to the sqlite3 database</span>
-<span class="sd">        </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">database</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">db</span><span class="p">),</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
     <span class="n">database</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">connection</span>
-</div>
-<div class="viewcode-block" id="create_tables"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.create_tables">[docs]</a><span class="k">def</span> <span class="nf">create_tables</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">connection</span></div>
+
+
+<div class="viewcode-block" id="create_tables"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.create_tables">[docs]</a><span class="k">def</span> <span class="nf">create_tables</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create the relevant tables into the database</span>
-<span class="sd">    </span>
+
 <span class="sd">    :param cursor: sqlite 3 cursor</span>
-<span class="sd">    :param property: the desired property - for now : &quot;materials&quot;</span>
-<span class="sd">        </span>
+<span class="sd">    :param prop: the desired property - for now : &quot;materials&quot;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">property</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS materials </span>
 <span class="s">                        (category text, -- category of material e.g. stainless steel, or tools steel, or carbon steel, or brass etc.</span>
 <span class="s">                        source text, -- source of the data, put in the data-sheet header</span>
@@ -160,110 +165,119 @@
 <span class="s">                        HRC integer, -- Rockwell C hardness</span>
 <span class="s">                        S_f real -- MPa - fatigue strength at 5E8 cycles</span>
 <span class="s">                        ) </span>
-<span class="s">                       &quot;&quot;&quot;</span><span class="p">)</span>  
-    </div>
-<div class="viewcode-block" id="check_pattern"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.check_pattern">[docs]</a><span class="k">def</span> <span class="nf">check_pattern</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>  
+<span class="s">                       &quot;&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_pattern"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.check_pattern">[docs]</a><span class="k">def</span> <span class="nf">check_pattern</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check and ensure that the properties are given in the expected order to avoid mixing up the columns</span>
-<span class="sd">    </span>
+
 <span class="sd">    :param line: the header line corresponding to the symbols of the given columns</span>
 <span class="sd">    :type line: str list</span>
-<span class="sd">    :param property: the desired property to check</span>
+<span class="sd">    :param prop: the desired property to check</span>
 <span class="sd">    :return: raise an error if given and expected headers don&#39;t match</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">property</span> <span class="o">==</span> <span class="s">&#39;materials&#39;</span><span class="p">:</span>
-        <span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&#39;symbol&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;E&#39;</span><span class="p">,</span> <span class="c"># GPa</span>
-                        <span class="s">&#39;G&#39;</span><span class="p">,</span> <span class="c"># GPa</span>
-                        <span class="s">&#39;nu&#39;</span><span class="p">,</span> <span class="c"># dimensionless</span>
-                        <span class="s">&#39;rho&#39;</span><span class="p">,</span> <span class="c"># kg/m^3</span>
-                        <span class="s">&#39;S_y&#39;</span><span class="p">,</span> <span class="c"># MPa</span>
-                        <span class="s">&#39;S_ut&#39;</span><span class="p">,</span> <span class="c"># MPa</span>
-                        <span class="s">&#39;alpha&#39;</span><span class="p">,</span> <span class="c"># E-6/°C</span>
-                        <span class="s">&#39;HB&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;HRB&#39;</span><span class="p">,</span> 
-                        <span class="s">&#39;HRC&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;S_f&#39;</span> <span class="c"># MPa</span>
-                        <span class="p">]</span>
-    
+    <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&#39;materials&#39;</span><span class="p">:</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;symbol&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;E&#39;</span><span class="p">,</span>  <span class="c"># GPa</span>
+                   <span class="s">&#39;G&#39;</span><span class="p">,</span>  <span class="c"># GPa</span>
+                   <span class="s">&#39;nu&#39;</span><span class="p">,</span>  <span class="c"># dimensionless</span>
+                   <span class="s">&#39;rho&#39;</span><span class="p">,</span>  <span class="c"># kg/m^3</span>
+                   <span class="s">&#39;S_y&#39;</span><span class="p">,</span>  <span class="c"># MPa</span>
+                   <span class="s">&#39;S_ut&#39;</span><span class="p">,</span>  <span class="c"># MPa</span>
+                   <span class="s">&#39;alpha&#39;</span><span class="p">,</span>  <span class="c"># E-6/°C</span>
+                   <span class="s">&#39;HB&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;HRB&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;HRC&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;S_f&#39;</span>  <span class="c"># MPa</span>
+                   <span class="p">]</span>
+
     <span class="k">if</span> <span class="n">pattern</span> <span class="o">!=</span> <span class="n">line</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s">&quot;Database pattern and CSV file pattern do not match </span><span class="se">\n</span><span class="s"> Given : </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s"> Expected : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">line</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="insert_property"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.insert_property">[docs]</a><span class="k">def</span> <span class="nf">insert_property</span><span class="p">(</span><span class="nb">property</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span>
+            <span class="s">&quot;Database pattern and CSV file pattern do not match </span><span class="se">\n</span><span class="s"> Given : </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s"> Expected : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">line</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="insert_property"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.insert_property">[docs]</a><span class="k">def</span> <span class="nf">insert_property</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build the database insertion with the relevant formatted data</span>
-<span class="sd">    </span>
-<span class="sd">    :param property: the property to build</span>
+
+<span class="sd">    :param prop: the property to build</span>
 <span class="sd">    :param cursor: the database cursor handler</span>
 <span class="sd">    :param comment: the comment to add in every insertion, namely : the source of the data - should be the first line of the CSV data-sheet</span>
 <span class="sd">    :param category: the category of the property to add. For exemple : cast iron, stainless steel, carbon steel, etc.</span>
 <span class="sd">    :param line: the data line from the CSV data-sheet</span>
-<span class="sd">    :type property: string</span>
+<span class="sd">    :type prop: string</span>
 <span class="sd">    :type cursor: sqlite3 handler</span>
 <span class="sd">    :type comment: string</span>
 <span class="sd">    :type category: string</span>
 <span class="sd">    :type line: list of strings</span>
-<span class="sd">        </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">save</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">category</span><span class="p">,</span> <span class="n">comment</span><span class="p">]</span> <span class="o">+</span> <span class="n">line</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">property</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">save</span><span class="p">)</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;INSERT INTO materials VALUES </span>
 <span class="s">        (</span>
 <span class="s">        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?</span>
 <span class="s">        )</span>
-<span class="s">        &quot;&quot;&quot;</span> <span class="p">,</span> <span class="n">save</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="parse_csv"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.parse_csv">[docs]</a><span class="k">def</span> <span class="nf">parse_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="p">,</span> <span class="n">save</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse_csv"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.parse_csv">[docs]</a><span class="k">def</span> <span class="nf">parse_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parse the CSV files and process their data</span>
-<span class="sd">    </span>
+
 <span class="sd">    :param PATH: root of all the librairies</span>
 <span class="sd">    :param cursor: sqlite3 handler</span>
 <span class="sd">    :param database: sqlite file</span>
-<span class="sd">    :param property: the given property</span>
-<span class="sd">    </span>
+<span class="sd">    :param prop: the given property</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="nb">property</span><span class="p">):</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="n">prop</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.csv&#39;</span><span class="p">):</span>
-                
-                <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
-                
-                <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">&quot;ignore&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+
+                <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+
+                <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">&quot;ignore&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
                     <span class="c"># File name : extract the category of the data-sheet</span>
                     <span class="n">category</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.csv&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">)</span>
                     <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span>
-                    
+
                     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-                    
+
                     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
                         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="c"># First line : extract the comment/source of the data</span>
+                            <span class="c"># First line : extract the comment/source of the</span>
+                            <span class="c"># data</span>
                             <span class="n">comment</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                            <span class="c"># Third line : extract the columns symbols header and check them</span>
-                            <span class="n">check_pattern</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>    
-                        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="p">:</span>
-                            <span class="c"># Fourth line and following : insert data into database</span>
-                            <span class="n">insert_property</span><span class="p">(</span><span class="nb">property</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
-                            
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-                        </div>
-<div class="viewcode-block" id="build_property"><a class="viewcode-back" href="../../LibreMechanicalDesign.lib.html#lib.build.build_property">[docs]</a><span class="k">def</span> <span class="nf">build_property</span><span class="p">(</span><span class="nb">property</span><span class="p">):</span>
+                            <span class="c"># Third line : extract the columns symbols header</span>
+                            <span class="c"># and check them</span>
+                            <span class="n">check_pattern</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+                            <span class="c"># Fourth line and following : insert data into</span>
+                            <span class="c"># database</span>
+                            <span class="n">insert_property</span><span class="p">(</span>
+                                <span class="n">prop</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="build_property"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.build_property">[docs]</a><span class="k">def</span> <span class="nf">build_property</span><span class="p">(</span><span class="n">prop</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sequence of functions to build a new property into the database</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="nb">property</span><span class="p">)</span>
+    <span class="n">PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
     <span class="n">db</span> <span class="o">=</span> <span class="n">database_handle</span><span class="p">(</span><span class="s">&#39;properties.db&#39;</span><span class="p">)</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-    <span class="n">create_tables</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
-    <span class="n">parse_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+    <span class="n">create_tables</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+    <span class="n">parse_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</div>
+    <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;materials&quot;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">:</span>
@@ -273,9 +287,9 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -292,7 +306,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -301,13 +315,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>

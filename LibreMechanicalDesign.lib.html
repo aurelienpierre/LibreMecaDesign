@@ -8,7 +8,7 @@
     
     <title>LibreMechanicalDesign.lib package &mdash; LibreMechanicalDesign dev documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,13 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="LibreMechanicalDesign dev documentation" href="index.html" />
-    <link rel="up" title="LibreMechanicalDesign package" href="LibreMechanicalDesign.html" />
-    <link rel="next" title="LibreMechanicalDesign.modules package" href="LibreMechanicalDesign.modules.html" />
-    <link rel="prev" title="LibreMechanicalDesign.gui package" href="LibreMechanicalDesign.gui.html" /> 
+    <link rel="top" title="LibreMechanicalDesign dev documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -38,21 +35,14 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="LibreMechanicalDesign.modules.html" title="LibreMechanicalDesign.modules package"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="LibreMechanicalDesign.gui.html" title="LibreMechanicalDesign.gui package"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="LibreMechanicalDesign.html" accesskey="U">LibreMechanicalDesign package</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="libremechanicaldesign-lib-package">
 <h1>LibreMechanicalDesign.lib package<a class="headerlink" href="#libremechanicaldesign-lib-package" title="Permalink to this headline">¶</a></h1>
@@ -61,7 +51,7 @@
 </div>
 <div class="section" id="module-lib.build">
 <span id="libremechanicaldesign-lib-build-module"></span><h2>LibreMechanicalDesign.lib.build module<a class="headerlink" href="#module-lib.build" title="Permalink to this headline">¶</a></h2>
-<p>This module imports all CSV data sheet from the <tt class="docutils literal"><span class="pre">lib</span></tt> directory into a sqlite database. 
+<p>This module imports all CSV data sheet from the <code class="docutils literal"><span class="pre">lib</span></code> directory into a sqlite database. 
 This script has to be executed each time a data sheet is added or edited.
 You just need to call it without argument.</p>
 <div class="admonition warning">
@@ -94,10 +84,10 @@ You just need to call it without argument.</p>
 <li>Rockwell C hardness</li>
 <li>Fatigue strength at 5E8 cycles (S_f, in MPa)</li>
 </ol>
-<p>A <tt class="docutils literal"><span class="pre">.csv</span></tt> template is provided in the <tt class="docutils literal"><span class="pre">lib</span></tt> root.</p>
+<p>A <code class="docutils literal"><span class="pre">.csv</span></code> template is provided in the <code class="docutils literal"><span class="pre">lib</span></code> root.</p>
 <ol class="arabic simple">
 <li>Check and ensure such data don&#8217;t already exist to avoid duplicates</li>
-<li>Use the provided <tt class="docutils literal"><span class="pre">.csv</span></tt> template and open it in your favorite spreadsheet editor</li>
+<li>Use the provided <code class="docutils literal"><span class="pre">.csv</span></code> template and open it in your favorite spreadsheet editor</li>
 <li><strong>IMPORTANT !</strong> Use the same exact order of columns and symbols headers</li>
 <li>Ensure values have a correct number format in the final CSV file :</li>
 </ol>
@@ -110,7 +100,7 @@ You just need to call it without argument.</p>
 </div></blockquote>
 <ol class="arabic simple">
 <li>Include the data source (organization, book, etc.) of your data in the 1st line of the header. It will be used in the database as a comment and to ensure the trustability of the data</li>
-<li>Give your final CSV file a relevant name like <tt class="docutils literal"><span class="pre">material.csv</span></tt>. For example : <tt class="docutils literal"><span class="pre">stainless-steel.csv</span></tt>, <tt class="docutils literal"><span class="pre">carbon-steel.csv</span></tt>, <tt class="docutils literal"><span class="pre">cast-iron.csv</span></tt> This name will be added into the database in the category column.</li>
+<li>Give your final CSV file a relevant name like <code class="docutils literal"><span class="pre">material.csv</span></code>. For example : <code class="docutils literal"><span class="pre">stainless-steel.csv</span></code>, <code class="docutils literal"><span class="pre">carbon-steel.csv</span></code>, <code class="docutils literal"><span class="pre">cast-iron.csv</span></code> This name will be added into the database in the category column.</li>
 <li>Try to split your data into consistent files to keep less than ~ 100 entries in each files (for maintainability)</li>
 <li>Save your file into the proper directory : the one mentioning the source organization of the data or the standard used to compute/measure the data : ISO, ACNOR, SAE, ASHRAE, etc.</li>
 </ol>
@@ -123,13 +113,13 @@ You just need to call it without argument.</p>
 </div>
 <dl class="function">
 <dt id="lib.build.build_property">
-<tt class="descclassname">lib.build.</tt><tt class="descname">build_property</tt><big>(</big><em>property</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#build_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.build_property" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">build_property</code><span class="sig-paren">(</span><em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#build_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.build_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sequence of functions to build a new property into the database</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="lib.build.check_pattern">
-<tt class="descclassname">lib.build.</tt><tt class="descname">check_pattern</tt><big>(</big><em>line</em>, <em>property</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#check_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.check_pattern" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">check_pattern</code><span class="sig-paren">(</span><em>line</em>, <em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#check_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.check_pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check and ensure that the properties are given in the expected order to avoid mixing up the columns</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -137,7 +127,7 @@ You just need to call it without argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>line</strong> (<em>str list</em>) &#8211; the header line corresponding to the symbols of the given columns</li>
-<li><strong>property</strong> &#8211; the desired property to check</li>
+<li><strong>prop</strong> &#8211; the desired property to check</li>
 </ul>
 </td>
 </tr>
@@ -150,7 +140,7 @@ You just need to call it without argument.</p>
 
 <dl class="function">
 <dt id="lib.build.create_tables">
-<tt class="descclassname">lib.build.</tt><tt class="descname">create_tables</tt><big>(</big><em>cursor</em>, <em>property</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#create_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.create_tables" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">create_tables</code><span class="sig-paren">(</span><em>cursor</em>, <em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#create_tables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.create_tables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the relevant tables into the database</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -158,7 +148,7 @@ You just need to call it without argument.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>cursor</strong> &#8211; sqlite 3 cursor</li>
-<li><strong>property</strong> &#8211; the desired property - for now : &#8220;materials&#8221;</li>
+<li><strong>prop</strong> &#8211; the desired property - for now : &#8220;materials&#8221;</li>
 </ul>
 </td>
 </tr>
@@ -168,7 +158,7 @@ You just need to call it without argument.</p>
 
 <dl class="function">
 <dt id="lib.build.database_handle">
-<tt class="descclassname">lib.build.</tt><tt class="descname">database_handle</tt><big>(</big><em>db</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#database_handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.database_handle" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">database_handle</code><span class="sig-paren">(</span><em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#database_handle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.database_handle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create or overwrite the sqlite3 database and open a connection if it does.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -184,14 +174,14 @@ You just need to call it without argument.</p>
 
 <dl class="function">
 <dt id="lib.build.insert_property">
-<tt class="descclassname">lib.build.</tt><tt class="descname">insert_property</tt><big>(</big><em>property</em>, <em>cursor</em>, <em>comment</em>, <em>category</em>, <em>line</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#insert_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.insert_property" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">insert_property</code><span class="sig-paren">(</span><em>prop</em>, <em>cursor</em>, <em>comment</em>, <em>category</em>, <em>line</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#insert_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.insert_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the database insertion with the relevant formatted data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>property</strong> (<em>string</em>) &#8211; the property to build</li>
+<li><strong>prop</strong> (<em>string</em>) &#8211; the property to build</li>
 <li><strong>cursor</strong> (<em>sqlite3 handler</em>) &#8211; the database cursor handler</li>
 <li><strong>comment</strong> (<em>string</em>) &#8211; the comment to add in every insertion, namely : the source of the data - should be the first line of the CSV data-sheet</li>
 <li><strong>category</strong> (<em>string</em>) &#8211; the category of the property to add. For exemple : cast iron, stainless steel, carbon steel, etc.</li>
@@ -205,7 +195,7 @@ You just need to call it without argument.</p>
 
 <dl class="function">
 <dt id="lib.build.parse_csv">
-<tt class="descclassname">lib.build.</tt><tt class="descname">parse_csv</tt><big>(</big><em>PATH</em>, <em>cursor</em>, <em>database</em>, <em>property</em><big>)</big><a class="reference internal" href="_modules/lib/build.html#parse_csv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.parse_csv" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">lib.build.</code><code class="descname">parse_csv</code><span class="sig-paren">(</span><em>PATH</em>, <em>cursor</em>, <em>database</em>, <em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#parse_csv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.parse_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the CSV files and process their data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -215,7 +205,7 @@ You just need to call it without argument.</p>
 <li><strong>PATH</strong> &#8211; root of all the librairies</li>
 <li><strong>cursor</strong> &#8211; sqlite3 handler</li>
 <li><strong>database</strong> &#8211; sqlite file</li>
-<li><strong>property</strong> &#8211; the given property</li>
+<li><strong>prop</strong> &#8211; the given property</li>
 </ul>
 </td>
 </tr>
@@ -225,8 +215,41 @@ You just need to call it without argument.</p>
 
 </div>
 </div>
-<div class="section" id="libremechanicaldesign-lib-geometry-module">
-<h2>LibreMechanicalDesign.lib.geometry module<a class="headerlink" href="#libremechanicaldesign-lib-geometry-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-lib.geometry">
+<span id="libremechanicaldesign-lib-geometry-module"></span><h2>LibreMechanicalDesign.lib.geometry module<a class="headerlink" href="#module-lib.geometry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="lib.geometry.geometry">
+<em class="property">class </em><code class="descclassname">lib.geometry.</code><code class="descname">geometry</code><span class="sig-paren">(</span><em>section</em>, <em>length</em>, <em>a</em>, <em>b=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>section</em> : type of the section
+<em>a</em> : first dimension (height or external diameter)
+<em>b</em> : second dimension (none or width or internal diameter)</p>
+<dl class="method">
+<dt id="lib.geometry.geometry.circle">
+<code class="descname">circle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry.circle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry.circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="lib.geometry.geometry.hollow_circle">
+<code class="descname">hollow_circle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry.hollow_circle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry.hollow_circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="lib.geometry.geometry.rectangle">
+<code class="descname">rectangle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry.rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry.rectangle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="lib.geometry.geometry.right_triangle">
+<code class="descname">right_triangle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry.right_triangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry.right_triangle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="lib.geometry.geometry.semi_circle">
+<code class="descname">semi_circle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/geometry.html#geometry.semi_circle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.geometry.geometry.semi_circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-lib.materials">
 <span id="libremechanicaldesign-lib-materials-module"></span><h2>LibreMechanicalDesign.lib.materials module<a class="headerlink" href="#module-lib.materials" title="Permalink to this headline">¶</a></h2>
@@ -234,32 +257,31 @@ You just need to call it without argument.</p>
 human-readable names.</p>
 <dl class="class">
 <dt id="lib.materials.materials">
-<em class="property">class </em><tt class="descclassname">lib.materials.</tt><tt class="descname">materials</tt><big>(</big><em>material</em>, <em>standard=''</em>, <em>**kwds</em><big>)</big><a class="reference internal" href="_modules/lib/materials.html#materials"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.materials.materials" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
-<dl class="method">
+<em class="property">class </em><code class="descclassname">lib.materials.</code><code class="descname">materials</code><span class="sig-paren">(</span><em>material</em>, <em>standard=''</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/materials.html#materials"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.materials.materials" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
 <dt id="lib.materials.materials.processdata">
-<tt class="descname">processdata</tt><big>(</big><em>dir</em>, <em>file</em><big>)</big><a class="reference internal" href="_modules/lib/materials.html#materials.processdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.materials.materials.processdata" title="Permalink to this definition">¶</a></dt>
+<code class="descname">processdata</code><span class="sig-paren">(</span><em>dir</em>, <em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.materials.materials.processdata" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="lib.materials.materials.trimdata">
-<tt class="descname">trimdata</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/lib/materials.html#materials.trimdata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.materials.materials.trimdata" title="Permalink to this definition">¶</a></dt>
+<code class="descname">trimdata</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.materials.materials.trimdata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract the symbols of the properties from the 3rd line of the data-sheet</p>
 </dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-lib"></span></div>
+<div class="section" id="module-lib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lib" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -270,25 +292,21 @@ human-readable names.</p>
 <li><a class="reference internal" href="#adding-data">Adding data</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#libremechanicaldesign-lib-geometry-module">LibreMechanicalDesign.lib.geometry module</a></li>
+<li><a class="reference internal" href="#module-lib.geometry">LibreMechanicalDesign.lib.geometry module</a></li>
 <li><a class="reference internal" href="#module-lib.materials">LibreMechanicalDesign.lib.materials module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-lib">Module contents</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="LibreMechanicalDesign.gui.html"
-                        title="previous chapter">LibreMechanicalDesign.gui package</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="LibreMechanicalDesign.modules.html"
-                        title="next chapter">LibreMechanicalDesign.modules package</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/LibreMechanicalDesign.lib.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/LibreMechanicalDesign.lib.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -305,7 +323,7 @@ human-readable names.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -314,19 +332,12 @@ human-readable names.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="LibreMechanicalDesign.modules.html" title="LibreMechanicalDesign.modules package"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="LibreMechanicalDesign.gui.html" title="LibreMechanicalDesign.gui package"
-             >previous</a> |</li>
-        <li><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="LibreMechanicalDesign.html" >LibreMechanicalDesign package</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>

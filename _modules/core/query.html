@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>core.query &mdash; LibreMechanicalDesign dev documentation</title>
+    <title>core.query &mdash; LibreMecaDesign dev documentation</title>
     
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,11 +23,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="LibreMechanicalDesign dev documentation" href="../../index.html" />
+    <link rel="top" title="LibreMecaDesign dev documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,62 +36,59 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <h1>Source code for core.query</h1><div class="highlight"><pre>
-<span class="c"># encoding: utf-8</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Created on 20 déc. 2015</span>
-
-<span class="sd">@author: aurelien</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="kn">import</span> <span class="nn">LibreMechanicalDesign</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
-<div class="viewcode-block" id="q_string"><a class="viewcode-back" href="../../LibreMechanicalDesign.core.html#core.query.q_string">[docs]</a><span class="k">def</span> <span class="nf">q_string</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
+
+<div class="viewcode-block" id="q_string"><a class="viewcode-back" href="../../LMD.core.html#core.query.q_string">[docs]</a><span class="k">def</span> <span class="nf">q_string</span><span class="p">(</span><span class="n">query_string</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Split a query string into keywords and interprate boolean operators</span>
 <span class="sd">        :query_string: unformatted string</span>
-<span class="sd">        </span>
-<span class="sd">    Output : </span>
+
+<span class="sd">    Output :</span>
 <span class="sd">        :OR: list of terms to search alternatively</span>
 <span class="sd">        :AND: list of sets to search together</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">OR_split</span> <span class="o">=</span> <span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;OR&#39;</span><span class="p">)</span>
-    
+
     <span class="n">AND</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">OR</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">OR_split</span><span class="p">:</span>
         <span class="k">if</span> <span class="s">&quot;AND&quot;</span> <span class="ow">in</span> <span class="n">element</span><span class="p">:</span>
             <span class="n">AND_split</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;AND&#39;</span><span class="p">)</span>
             <span class="n">AND</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">AND_split</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">OR</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-            
-    <span class="k">return</span> <span class="n">OR</span><span class="p">,</span> <span class="n">AND</span>
-    
-</div>
+
+    <span class="k">return</span> <span class="n">OR</span><span class="p">,</span> <span class="n">AND</span></div>
+
+
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">query</span><span class="p">(</span><span class="s">&#39;steel query OR string AND bla AND ta soeur OR 2e test AND shit&#39;</span><span class="p">)</span>
+    <span class="n">q_string</span><span class="p">(</span><span class="s">&#39;steel query OR string AND bla AND ta soeur OR 2e test AND shit&#39;</span><span class="p">)</span>
 </pre></div>
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
@@ -108,7 +105,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -117,13 +114,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">LibreMechanicalDesign dev documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
     </div>
   </body>
 </html>

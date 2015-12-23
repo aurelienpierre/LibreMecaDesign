@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>LibreMecaDesign : Developpers introduction &mdash; LibreMecaDesign dev documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="LibreMecaDesign dev documentation" href="index.html" />
+    <link rel="up" title="LibreMechanicalDesign : Developpers reference" href="DEV.html" />
+    <link rel="next" title="LibreMechanicalDesign package" href="LMD.html" />
+    <link rel="prev" title="LibreMechanicalDesign : Developpers reference" href="DEV.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LMD.html" title="LibreMechanicalDesign package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DEV.html" title="LibreMechanicalDesign : Developpers reference"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="DEV.html" accesskey="U">LibreMechanicalDesign : Developpers reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="libremecadesign-developpers-introduction">
+<h1>LibreMecaDesign : Developpers introduction<a class="headerlink" href="#libremecadesign-developpers-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goal-and-purpose">
+<h2>Goal and purpose<a class="headerlink" href="#goal-and-purpose" title="Permalink to this headline">¶</a></h2>
+<p>When it comes to engineering and scientific computing, you have many choices between proprietary solutions :</p>
+<ul class="simple">
+<li>CATIA is probably the best CAD software, with a finite elements computing module,</li>
+<li>Hypermesh is very convenient as a standalone finite elements computing software,</li>
+<li>EES (Engineering Equations Solver) is very convenient to solve specific (thermofluid) problems with an extensive fluids properties database and asynchronous solver</li>
+<li>Matlab is an efficient general-purpose matrix computing with built-in IDE</li>
+</ul>
+<p>But :</p>
+<ul class="simple">
+<li>None of this programs communicates with the others, which means you have to import/export yourself your programs,</li>
+<li>All of them are closed-sources softwares, which is pretty bad as an engineer is responsible for his designs and may not want to trust blindly a third-party software,</li>
+<li>All of them attach the user into their own IDE/GUI making it impossible to use them as librairies or in another IDE,</li>
+<li>CATIA is heavy and does not work on Linux,</li>
+<li>EES is quite specific, old and not ready for parallel or cloud computing</li>
+<li>Matlab does not allow computation with units</li>
+</ul>
+<p>I wanted to have a nice computing software with :</p>
+<ul class="simple">
+<li>Extensive materials database,</li>
+<li>Unit computing,</li>
+<li>Symbolic computing,</li>
+<li>A very versatile base with an objective architecture and independant modules,</li>
+<li>Some open doors for the future, like parallel and cloud computing, CAD, optimization and stuff</li>
+</ul>
+<p>Here we are...</p>
+<p>LibreMecaDesign is currently in its very basic developpement phase. As it is intended to be easily extensible, every part has to stay minimalist.
+Thus, it will be organized into layers, from low level to top level.</p>
+</div>
+<div class="section" id="coding-philosophy">
+<h2>Coding Philosophy<a class="headerlink" href="#coding-philosophy" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><strong>One task = One function</strong>.<ul>
+<li>Only inputs and outputs matter</li>
+<li>Code should be factorized</li>
+</ul>
+</li>
+<li><strong>Everything stay a symbolic object</strong>.<ul>
+<li>Thanks to sympy, it&#8217;s now possible to handle algebraic and symbolic equations into Python</li>
+<li>Keeping symbolic equations until the last moment avoid intermediate approximations and allow algebraic solving in some cases</li>
+<li>Some users may want formal solutions</li>
+<li>Figures are put into the symbols just in time for solving</li>
+</ul>
+</li>
+<li><strong>Information should be human-readable</strong>.<ul>
+<li>The revolution of Google was to connect human and knowledge in a fast and easy way</li>
+<li>The next revolution will be to connect knowledge and advanced processing the same way (inspired by Stefan Wolfram and the Wolfram Language)</li>
+</ul>
+</li>
+<li><strong>Every piece of code should be documented before beeing written</strong><ul>
+<li>An undocumented function is useless and makes a program tricky to debug</li>
+<li>When you are able to explain your function before writting it, chances are that your code will be clear and simple</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="code-layers">
+<h2>Code layers<a class="headerlink" href="#code-layers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layer-0-database">
+<h3>Layer 0 : database<a class="headerlink" href="#layer-0-database" title="Permalink to this headline">¶</a></h3>
+<p>First step : creating a nice API to allow anyone to add data in the librairies - DONE !</p>
+<p>A module has been written to allow every dummy user to add materials properties just from a template with a simple Excel Spreadsheet and exporting it to CSV. Then, the module take care of the database building while performing some verifications.</p>
+<p>Second step : create a search engine to retrieve every material properties from a simple text query (Google-like) and store them for any use - IN PROGRESS</p>
+<p>Syntax is outdated and information should be quickly accessible just with words. Especially when your computing is intended to find a material that suits your requirements, you don&#8217;t want to scroll the table to find your needed yield tensile strength. Materials properties will be accessible without fancy parameters.</p>
+</div>
+<div class="section" id="layer-1-classes-and-container">
+<h3>Layer 1 : classes and container<a class="headerlink" href="#layer-1-classes-and-container" title="Permalink to this headline">¶</a></h3>
+<p>Each object will be described by a container or meta-class. This container will gather classes that will store properties as numbers or symbolic equations :</p>
+<ol class="arabic simple">
+<li>Class Geometry</li>
+<li>Class Materials</li>
+<li>Class Forces</li>
+<li>Class Constraints</li>
+<li>Class whatever...</li>
+</ol>
+</div>
+<div class="section" id="layer-2-modules">
+<h3>Layer 2 : modules<a class="headerlink" href="#layer-2-modules" title="Permalink to this headline">¶</a></h3>
+<p>The modules will allow users to set operating conditions such as forces, torques, moments thus equations that build links between the properties of the object.</p>
+<ol class="arabic simple">
+<li>beams</li>
+<li>shafts</li>
+<li>couplings</li>
+<li>bearings</li>
+<li>gears</li>
+<li>springs</li>
+<li>screws and bolts</li>
+<li>clutches and brakes</li>
+<li>Castigliano method</li>
+</ol>
+</div>
+<div class="section" id="layer-3-solver">
+<h3>Layer 3 : solver<a class="headerlink" href="#layer-3-solver" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="layer-4-gui">
+<h3>Layer 4 : GUI<a class="headerlink" href="#layer-4-gui" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="layer-5-cad">
+<h3>Layer 5 : CAD<a class="headerlink" href="#layer-5-cad" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">LibreMecaDesign : Developpers introduction</a><ul>
+<li><a class="reference internal" href="#goal-and-purpose">Goal and purpose</a></li>
+<li><a class="reference internal" href="#coding-philosophy">Coding Philosophy</a></li>
+<li><a class="reference internal" href="#code-layers">Code layers</a><ul>
+<li><a class="reference internal" href="#layer-0-database">Layer 0 : database</a></li>
+<li><a class="reference internal" href="#layer-1-classes-and-container">Layer 1 : classes and container</a></li>
+<li><a class="reference internal" href="#layer-2-modules">Layer 2 : modules</a></li>
+<li><a class="reference internal" href="#layer-3-solver">Layer 3 : solver</a></li>
+<li><a class="reference internal" href="#layer-4-gui">Layer 4 : GUI</a></li>
+<li><a class="reference internal" href="#layer-5-cad">Layer 5 : CAD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DEV.html"
+                        title="previous chapter">LibreMechanicalDesign : Developpers reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="LMD.html"
+                        title="next chapter">LibreMechanicalDesign package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/DEV.intro.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="LMD.html" title="LibreMechanicalDesign package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DEV.html" title="LibreMechanicalDesign : Developpers reference"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="DEV.html" >LibreMechanicalDesign : Developpers reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Aurélien PIERRE.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
+    </div>
+  </body>
+</html>
