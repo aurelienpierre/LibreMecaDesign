@@ -9,13 +9,5 @@ __version__ = "0.1"
 __maintainer__ = "Aurélien PIERRE"
 __email__ = "contact@aurelienpierre.com"
 __status__ = "Development"
-__name__ = "LibreMechanicalDesign"
 
-__all__ = ["core", "lib", "lib"]
-
-import scipy, sympy, pylab, os, sys, csv
-
-import core.query
-import lib
-
-
+__all__ = ["core", "gui", "lib", "modules"]
