@@ -1,0 +1,40 @@
+SAE Handbook, Society of Automotive Engineers, Warrenddale, PA; Metals Handbook, American Society for Metals, Material Park, Ohio,													
+property	aliases	treatment	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles
+symbol	none		E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f
+unit		none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa
+1010		hot rolled	206.8	80.8	0.28	7800000	179	324		95			
+1010		cold rolled	206.8	80.8	0.28	7800000	303	365		105			
+1020		hot rolled	206.8	80.8	0.28	7800000	207	379		111			
+1020		cold rolled	206.8	80.8	0.28	7800000	393	469		131			
+1030		hot rolled	206.8	80.8	0.28	7800000	259	469		137			
+1030		normalized @ 900°C	206.8	80.8	0.28	7800000	345	517		149			
+1030		cold rolled	206.8	80.8	0.28	7800000	441	524		149			
+1030		quench & temper @ 538°C	206.8	80.8	0.28	7800000	517	669		255			
+1030		quench & temper @ 426°C	206.8	80.8	0.28	7800000	579	731		302			
+1030		quench & temper @ 204°C	206.8	80.8	0.28	7800000	648	848		495			
+1035		hot rolled	206.8	80.8	0.28	7800000	276	496		143			
+1035		cold rolled	206.8	80.8	0.28	7800000	462	552		163			
+1040		hot rolled	206.8	80.8	0.28	7800000	290	524		149			
+1040		normalized @ 900°C	206.8	80.8	0.28	7800000	372	593		170			
+1040		cold rolled	206.8	80.8	0.28	7800000	490	586		170			
+1040		quench & temper @ 650°C	206.8	80.8	0.28	7800000	434	634		192			
+1040		quench & temper @ 426°C	206.8	80.8	0.28	7800000	552	758		241			
+1040		quench & temper @ 204°C	206.8	80.8	0.28	7800000	593	779		262			
+1045		hot rolled	206.8	80.8	0.28	7800000	310	565		163			
+1045		cold rolled	206.8	80.8	0.28	7800000	531	627		179			
+1050		hot rolled	206.8	80.8	0.28	7800000	345	621		179			
+1050		normalized @ 900°C	206.8	80.8	0.28	7800000	427	745		217			
+1050		cold rolled	206.8	80.8	0.28	7800000	579	689		197			
+1050		quench & temper @ 650°C	206.8	80.8	0.28	7800000	538	717		235			
+1050		quench & temper @ 426°C	206.8	80.8	0.28	7800000	793	1089		444			
+1050		quench & temper @ 204°C	206.8	80.8	0.28	7800000	807	1124		514			
+1060		hot rolled	206.8	80.8	0.28	7800000	372	676		200			
+1060		normalized @ 900°C	206.8	80.8	0.28	7800000	421	772		229			
+1060		quench & temper @ 650°C	206.8	80.8	0.28	7800000	524	800		229			
+1060		quench & temper @ 426°C	206.8	80.8	0.28	7800000	669	965		277			
+1060		quench & temper @ 204°C	206.8	80.8	0.28	7800000	765	1076		311			
+1095		hot rolled	206.8	80.8	0.28	7800000	455	827		248			
+1095		normalized @ 900°C	206.8	80.8	0.28	7800000	496	1014		13			
+1095		quench & temper @ 650°C	206.8	80.8	0.28	7800000	552	896		269			
+1095		quench & temper @ 426°C	206.8	80.8	0.28	7800000	772	1213		363			
+1095		quench & temper @ 204°C	206.8	80.8	0.28	7800000	814	1262		375			

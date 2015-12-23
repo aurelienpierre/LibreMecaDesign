@@ -1,0 +1,5 @@
+source of data													
+property	aliases	treatment	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles
+symbol	none		E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f
+unit		none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa
+1010		hot rolled	206.8	80.8	0.28	7800000	179	324		95			
