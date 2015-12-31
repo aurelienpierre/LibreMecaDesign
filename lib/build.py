@@ -130,7 +130,9 @@ def check_pattern(line, prop):
 
     """
     if prop == 'materials':
-        pattern = ['symbol', 'none', '',
+        pattern = ['symbol', 
+                   'none', 
+                   '',
                    'E',  # GPa
                    'G',  # GPa
                    'nu',  # dimensionless
@@ -149,6 +151,33 @@ def check_pattern(line, prop):
             "Database pattern and CSV file pattern do not match \n Given : %s \n Expected : %s" % line, pattern)
 
 
+def SI_convert(line, prop):
+    """
+    Convert usual engineering units & multiples to SI units to normalize database
+    
+    .. note::  the units and multiple handled from the CSV data-sheet are considered\
+    given in usual engineering habits (GPa, MPa, etc.) because they are human-readable\
+    and standard tables are given is such units. \
+    However, to make the database unit-independant and facilitate later querying,\
+    multiples have to be normalized into SI standards.
+    
+    """
+
+    if prop == "materials":
+        # Mandatory values
+        line[4] = float(line[4]) * 1E9  #: E : Convert GPa in Pa (SI)
+        line[5] = float(line[5]) * 1E9  #: G : Convert GPa in Pa (SI)
+        line[7] = float(line[7]) * 1E6  #: S_y : Convert MPa in Pa (SI)
+        line[8] = float(line[8]) * 1E6  #: S_ut : Convert MPa in Pa (SI)
+        
+        # Optional values
+        try:
+            line[9] = float(line[9]) * 1E-6  #: alpha : Convert µ/°C in 1/°C
+        except ValueError:
+            print("Warning : Thermal expansion coefficient is missing and will be ignored")
+
+    return line
+
 def insert_property(prop, cursor, comment, category, line):
     """
     Build the database insertion with the relevant formatted data
@@ -165,8 +194,11 @@ def insert_property(prop, cursor, comment, category, line):
     :type line: list of strings
 
     """
-    save = tuple([category, comment] + line)
+
+    
     if prop == "materials":
+        line = SI_convert(line, prop)
+        save = tuple([category, comment] + line)
         print(save)
         cursor.execute("""INSERT INTO materials VALUES 
         (
