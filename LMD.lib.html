@@ -122,6 +122,16 @@ You just need to call it without argument.</p>
 </ul>
 </div>
 <dl class="function">
+<dt id="lib.build.SI_convert">
+<code class="descclassname">lib.build.</code><code class="descname">SI_convert</code><span class="sig-paren">(</span><em>line</em>, <em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#SI_convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.SI_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert usual engineering units &amp; multiples to SI units to normalize database</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">the units and multiple handled from the CSV data-sheet are considered    given in usual engineering habits (GPa, MPa, etc.) because they are human-readable    and standard tables are given is such units.    However, to make the database unit-independant and facilitate later querying,    multiples have to be normalized into SI standards.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
 <dt id="lib.build.build_property">
 <code class="descclassname">lib.build.</code><code class="descname">build_property</code><span class="sig-paren">(</span><em>prop</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lib/build.html#build_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lib.build.build_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sequence of functions to build a new property into the database</p>

@@ -179,7 +179,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&#39;materials&#39;</span><span class="p">:</span>
-        <span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;symbol&#39;</span><span class="p">,</span> <span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;symbol&#39;</span><span class="p">,</span> 
+                   <span class="s">&#39;none&#39;</span><span class="p">,</span> 
+                   <span class="s">&#39;&#39;</span><span class="p">,</span>
                    <span class="s">&#39;E&#39;</span><span class="p">,</span>  <span class="c"># GPa</span>
                    <span class="s">&#39;G&#39;</span><span class="p">,</span>  <span class="c"># GPa</span>
                    <span class="s">&#39;nu&#39;</span><span class="p">,</span>  <span class="c"># dimensionless</span>
@@ -198,6 +200,33 @@
             <span class="s">&quot;Database pattern and CSV file pattern do not match </span><span class="se">\n</span><span class="s"> Given : </span><span class="si">%s</span><span class="s"> </span><span class="se">\n</span><span class="s"> Expected : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">line</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="SI_convert"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.SI_convert">[docs]</a><span class="k">def</span> <span class="nf">SI_convert</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">prop</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert usual engineering units &amp; multiples to SI units to normalize database</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::  the units and multiple handled from the CSV data-sheet are considered\</span>
+<span class="sd">    given in usual engineering habits (GPa, MPa, etc.) because they are human-readable\</span>
+<span class="sd">    and standard tables are given is such units.\</span>
+<span class="sd">    However, to make the database unit-independant and facilitate later querying,\</span>
+<span class="sd">    multiples have to be normalized into SI standards.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
+        <span class="c"># Mandatory values</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: E : Convert GPa in Pa (SI)</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: G : Convert GPa in Pa (SI)</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E6</span>  <span class="c">#: S_y : Convert MPa in Pa (SI)</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E6</span>  <span class="c">#: S_ut : Convert MPa in Pa (SI)</span>
+        
+        <span class="c"># Optional values</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">line</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E-6</span>  <span class="c">#: alpha : Convert µ/°C in 1/°C</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Warning : Thermal expansion coefficient is missing and will be ignored&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">line</span></div>
+
 <div class="viewcode-block" id="insert_property"><a class="viewcode-back" href="../../LMD.lib.html#lib.build.insert_property">[docs]</a><span class="k">def</span> <span class="nf">insert_property</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">cursor</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build the database insertion with the relevant formatted data</span>
@@ -214,8 +243,11 @@
 <span class="sd">    :type line: list of strings</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">save</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">category</span><span class="p">,</span> <span class="n">comment</span><span class="p">]</span> <span class="o">+</span> <span class="n">line</span><span class="p">)</span>
+
+    
     <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">SI_convert</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+        <span class="n">save</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">category</span><span class="p">,</span> <span class="n">comment</span><span class="p">]</span> <span class="o">+</span> <span class="n">line</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="n">save</span><span class="p">)</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;&quot;&quot;INSERT INTO materials VALUES </span>
 <span class="s">        (</span>

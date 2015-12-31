@@ -80,16 +80,21 @@
 </div>
 <div class="section" id="module-core.query">
 <span id="core-query-module"></span><h2>core.query module<a class="headerlink" href="#module-core.query" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="core.query.q_string">
-<code class="descclassname">core.query.</code><code class="descname">q_string</code><span class="sig-paren">(</span><em>query_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/core/query.html#q_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.q_string" title="Permalink to this definition">¶</a></dt>
+<dl class="class">
+<dt id="core.query.search">
+<em class="property">class </em><code class="descclassname">core.query.</code><code class="descname">search</code><span class="sig-paren">(</span><em>query_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/core/query.html#search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the queries</p>
+<dl class="method">
+<dt id="core.query.search.prepare_query">
+<code class="descname">prepare_query</code><span class="sig-paren">(</span><em>query_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/core/query.html#search.prepare_query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.search.prepare_query" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>Split a query string into keywords and interprate boolean operators</dt>
+<dt>Split a query string into keywords and interpretate boolean operators</dt>
 <dd><table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">query_string:</th><td class="field-body">unformatted string</td>
+<tr class="field-odd field"><th class="field-name" colspan="2">parameter query_string:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">unformatted string</td>
 </tr>
 </tbody>
 </table>
@@ -99,14 +104,22 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">OR:</th><td class="field-body">list of terms to search alternatively</td>
+<tr class="field-odd field"><th class="field-name">return OR:</th><td class="field-body">list of terms to search alternatively</td>
 </tr>
-<tr class="field-even field"><th class="field-name">AND:</th><td class="field-body">list of sets to search together</td>
+<tr class="field-even field"><th class="field-name">return AND:</th><td class="field-body">list of sets to search together</td>
 </tr>
 </tbody>
 </table>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.query.search.remove_units">
+<code class="descname">remove_units</code><span class="sig-paren">(</span><em>query_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/core/query.html#search.remove_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#core.query.search.remove_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace multiples and units strings by numbers</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
