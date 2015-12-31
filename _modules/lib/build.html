@@ -206,7 +206,7 @@
 <span class="sd">    </span>
 <span class="sd">    .. note::  the units and multiple handled from the CSV data-sheet are considered\</span>
 <span class="sd">    given in usual engineering habits (GPa, MPa, etc.) because they are human-readable\</span>
-<span class="sd">    and standard tables are given is such units.\</span>
+<span class="sd">    and standard tables are given is such units. \</span>
 <span class="sd">    However, to make the database unit-independant and facilitate later querying,\</span>
 <span class="sd">    multiples have to be normalized into SI standards.</span>
 <span class="sd">    </span>
@@ -214,8 +214,8 @@
 
     <span class="k">if</span> <span class="n">prop</span> <span class="o">==</span> <span class="s">&quot;materials&quot;</span><span class="p">:</span>
         <span class="c"># Mandatory values</span>
-        <span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: E : Convert GPa in Pa (SI)</span>
-        <span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: G : Convert GPa in Pa (SI)</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: E : Convert GPa in Pa (SI)</span>
+        <span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E9</span>  <span class="c">#: G : Convert GPa in Pa (SI)</span>
         <span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E6</span>  <span class="c">#: S_y : Convert MPa in Pa (SI)</span>
         <span class="n">line</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1E6</span>  <span class="c">#: S_ut : Convert MPa in Pa (SI)</span>
         
