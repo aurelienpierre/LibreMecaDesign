@@ -165,8 +165,8 @@ def SI_convert(line, prop):
 
     if prop == "materials":
         # Mandatory values
-        line[4] = float(line[4]) * 1E9  #: E : Convert GPa in Pa (SI)
-        line[5] = float(line[5]) * 1E9  #: G : Convert GPa in Pa (SI)
+        line[3] = float(line[3]) * 1E9  #: E : Convert GPa in Pa (SI)
+        line[4] = float(line[4]) * 1E9  #: G : Convert GPa in Pa (SI)
         line[7] = float(line[7]) * 1E6  #: S_y : Convert MPa in Pa (SI)
         line[8] = float(line[8]) * 1E6  #: S_ut : Convert MPa in Pa (SI)
         

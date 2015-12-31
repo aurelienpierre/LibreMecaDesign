@@ -34,7 +34,7 @@ unit		none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa
 1060		quench & temper @ 426°C	206.8	80.8	0.28	7800000	669	965		277			
 1060		quench & temper @ 204°C	206.8	80.8	0.28	7800000	765	1076		311			
 1095		hot rolled	206.8	80.8	0.28	7800000	455	827		248			
-1095		normalized @ 900°C	206.8	80.8	0.28	7800000	496	1014		13			
+1095		normalized @ 900°C	206.8	80.8	0.28	7800000	496	1014					
 1095		quench & temper @ 650°C	206.8	80.8	0.28	7800000	552	896		269			
 1095		quench & temper @ 426°C	206.8	80.8	0.28	7800000	772	1213		363			
 1095		quench & temper @ 204°C	206.8	80.8	0.28	7800000	814	1262		375			

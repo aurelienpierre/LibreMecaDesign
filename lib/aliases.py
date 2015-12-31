@@ -7,14 +7,14 @@ import quantities as u
 
 # Map SI multiples and sub-multiples
 multiples = {
-                'n': 'E-9',
-                'µ': 'E-6',
-                'm': 'E-3',
+                'n': '* 1E-9',
+                'µ': '* 1E-6',
+                'm': '* 1E-3',
                 # No mutliple
-                'k': 'E+3',
-                'M': 'E+6',
-                'G': 'E+9',
-                'T': 'E+12'
+                'k': '* 1E+3',
+                'M': '* 1E+6',
+                'G': '* 1E+9',
+                'T': '* 1E+12'
              }
 
 # Map units strings with Quantities package's units
