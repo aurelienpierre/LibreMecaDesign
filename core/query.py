@@ -21,6 +21,40 @@ class search:
     """
     Handle the queries
     """
+    
+    def escape_optimization(self, query_string):
+        """
+        Search for an optimization keyword and store the condition
+        """
+        if '|' in query_string:
+            optim_split= query_string.split('|')
+            keyword = optim_split[1].strip()
+            self.condition = list(keyword.split(':'))
+            return optim_split[0]
+        else:
+            self.condition = None
+            return query_string
+
+    def prepare_query(self, query_string):
+        """
+        Split a query string into keywords and interpretate boolean operators
+
+        :param query_string: unformatted string
+
+        :return: nested list of lists of terms to search alternatively
+
+            * the top level list contains the OR arguments
+            * the nested lists contain the AND argument
+
+        """
+
+        OR_split = query_string.split('OR')
+
+        self.terms = []
+
+        for element in OR_split:
+            AND_split = element.split('AND')
+            self.terms.append(AND_split)
 
     def remove_units(self, query_string):
         """
@@ -46,28 +80,6 @@ class search:
             result = query_string.strip()
 
         return result
-
-    def prepare_query(self, query_string):
-        """
-        Split a query string into keywords and interpretate boolean operators
-
-        :param query_string: unformatted string
-
-        :return: nested list of lists of terms to search alternatively
-
-            * the top level list contains the OR arguments
-            * the nested lists contain the AND argument
-
-        """
-
-        OR_split = query_string.split('OR')
-
-        self.terms = []
-
-        for element in OR_split:
-            AND_split = element.split('AND')
-            self.terms.append(AND_split)
-
 
     def clean_query(self, queries):
         """
@@ -116,7 +128,7 @@ class search:
 
             if len(self.terms) > 1 and str(element) != last:
                 request = request + ' OR '
-
+        print(request)
         return request
 
     def process_query(self):
@@ -140,17 +152,37 @@ class search:
                 for field in row.keys():
                     self.results[i][field] = row[field]
                 i = i + 1
+                
+    def optimize(self):
+        arranged_list = (sorted(self.results, 
+                         key=lambda cond: cond[self.condition[1]]))
+        if "MIN" in self.condition[0]:
+            self.unique_result = arranged_list[0]
+        if "MAX" in self.condition[0]:
+            self.unique_result = arranged_list[-1]
+        if "MED" in self.condition[0]:
+            med = round((len(arranged_list)+1)/2)
+            self.unique_result = arranged_list[med]
+        else:
+            print("Optimization keyword not supported")
+            
 
     def __init__(self, query_string):
+        query_string = self.escape_optimization(query_string)
         self.prepare_query(query_string)
         self.clean_query(self.terms)
         self.process_query()
+        
+        if self.condition != None:
+            self.optimize()
         # TODO! add units
-        # TODO! add filters to keep only one value (max, min)
 
 if __name__ == '__main__':
-    q_string = 'steel AND S_y > 400 MPa AND S_ut > 500 MPa AND temper OR rolled'
+    q_string = 'S_ut > 500 MPa AND S_y < 400 MPa AND normalized OR temper | MED:S_y'
     a = search(q_string)
     
     for item in a.results:
-        print(item['category'], item['name'],item['S_ut'], item['treatment'])
+        print(item['category'], item['name'],item['S_ut'], item['S_y'], item['treatment'])
+        
+    print(a.condition)
+    print(a.unique_result)
