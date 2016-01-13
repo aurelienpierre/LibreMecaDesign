@@ -1,0 +1,28 @@
+Properties Of some Metals and Alloys, International Nicel Co., New York; Azo Materials, azom.com															
+property	aliases	treatment	chemical formula	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles	Elongation at break
+symbol	none	none	none	E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f	epsilon
+unit	none	none	none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa	dimensionless
+301	X10CrNi18-8, S30100, 1.4310, 2331	strip annealed	FeCCrNiMnSiPS	193	80	0.28	7880	276	758	17.5		85			0.6
+301	X10CrNi18-8, S30100, 1.4310, 2331	cold rolled	FeCCrNiMnSiPS	193	80	0.28	7880	1138	1379	17.5			41		0.08
+302		sheet annealed	FeCrNiMnSiCSP	193	80	0.28	7880	276	621			85			0.5
+302		sheet annealed	FeCrNiMnSiCSP	193	80	0.28	7880	1138	1310				40		0.05
+304		sheet annealed	FeCCrNiMnSiPS	193	81	0.27	7850	241	586	17		80			0.5
+304		cold rolled	FeCCrNiMnSiPS	193	81	0.27	7850	1103	1276	17			40		0.04
+314		bar annealed	FeCrNiMnSiCSP	200	80	0.27	7850	345	689	16	180				0.45
+316		sheet annealed	FeCCrNiMoMnSiPS	190	80	0.27	7870	276	621	16.5		85			0.5
+330		hot rolled	FeNiCrMnSiCPS	197	80	0.28	8000	379	689	14.4	200				0.35
+330		annealed	FeNiCrMnSiCPS	197	80	0.28	8000	241	552	14.4	150				0.15
+410	"X12Cr13, 2302, 1.4006
+	
+
+"	sheet annealed	FeCCrNiMnSiPS	200	80	0.28	7800	310	483	11		80			0.25
+410	"X12Cr13, 2302, 1.4006
+	
+
+"	heat treated	FeCCrNiMnSiPS	200	80	0.28	7800	965	1241	11			39		0.15
+420	X20Cr13, 2303, 1.4021	bar annealed	FeCCrMnSiP	200	80	0.28	7800	345	655	10.8		92			0.25
+420	X20Cr13, 2303, 1.4021	heat treated	FeCCrMnSiP	200	80	0.28	7800	1344	1586	10.8	500				0.08
+431	X17CrNi16-2, 1.4057, 2321	bar annealed	FeCCrNiMnSiPS	200	80	0.28	7800	655	862	11.1	260				0.25
+431	X17CrNi16-2, 1.4057, 2321	heat treated	FeCCrNiMnSiPS	200	80	0.28	7800	1034	1344	11.1	400				0.15
+440C		bar annealed	FeCrCMnSiMo	200	83.9	0.28	7800	448	758	10.2	230				0.14
+440C		quench and temper @ 315°C	FeCrCMnSiMo	200	83.9	0.28	7800	1896	1965	10.2			57		0.02

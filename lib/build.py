@@ -104,6 +104,7 @@ def create_tables(cursor, prop):
                         name text not null, -- normalized name of the material e.g. 4130, or 1010
                         aliases text, -- commercial or usual names coma separated e.g. Chromoly
                         treatment text, -- description of thermical and mechanical manufacturing
+                        chemical formula text, -- list of chemical species
                         E real, -- GPa - modulus of elasticity
                         G real, -- GPa - modulus of rigidity
                         nu real, -- dimensionless - Poisson's ratio
@@ -114,7 +115,8 @@ def create_tables(cursor, prop):
                         HB integer, -- Brinell hardness
                         HRB integer, -- Rockwell B hardness
                         HRC integer, -- Rockwell C hardness
-                        S_f real -- MPa - fatigue strength at 5E8 cycles
+                        S_f real, -- MPa - fatigue strength at 5E8 cycles
+                        epsilon real -- dimensionless - elongation at break
                         ) 
                        """)
 
@@ -132,7 +134,8 @@ def check_pattern(line, prop):
     if prop == 'materials':
         pattern = ['symbol', 
                    'none', 
-                   '',
+                   'none',
+                   'none',
                    'E',  # GPa
                    'G',  # GPa
                    'nu',  # dimensionless
@@ -143,12 +146,14 @@ def check_pattern(line, prop):
                    'HB',
                    'HRB',
                    'HRC',
-                   'S_f'  # MPa
+                   'S_f',  # MPa
+                   'epsilon'
                    ]
 
     if pattern != line:
         raise NameError(
-            "Database pattern and CSV file pattern do not match \n Given : %s \n Expected : %s" % line, pattern)
+            "Database pattern and CSV file pattern do not match \n Given : \t%s \n Expected :\t%s" 
+            % (line, pattern))
 
 
 def SI_convert(line, prop):
@@ -165,14 +170,14 @@ def SI_convert(line, prop):
 
     if prop == "materials":
         # Mandatory values
-        line[3] = float(line[3]) * 1E9  #: E : Convert GPa in Pa (SI)
-        line[4] = float(line[4]) * 1E9  #: G : Convert GPa in Pa (SI)
-        line[7] = float(line[7]) * 1E6  #: S_y : Convert MPa in Pa (SI)
-        line[8] = float(line[8]) * 1E6  #: S_ut : Convert MPa in Pa (SI)
+        line[4] = float(line[4]) * 1E9  #: E : Convert GPa in Pa (SI)
+        line[5] = float(line[5]) * 1E9  #: G : Convert GPa in Pa (SI)
+        line[8] = float(line[8]) * 1E6  #: S_y : Convert MPa in Pa (SI)
+        line[9] = float(line[9]) * 1E6  #: S_ut : Convert MPa in Pa (SI)
         
         # Optional values
         try:
-            line[9] = float(line[9]) * 1E-6  #: alpha : Convert µ/°C in 1/°C
+            line[10] = float(line[10]) * 1E-6  #: alpha : Convert µ/°C in 1/°C
         except ValueError:
             print("Warning : Thermal expansion coefficient is missing and will be ignored")
 
@@ -202,7 +207,7 @@ def insert_property(prop, cursor, comment, category, line):
         print(save)
         cursor.execute("""INSERT INTO materials VALUES 
         (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
         )
         """ , save)
 
@@ -217,6 +222,8 @@ def parse_csv(PATH, cursor, database, prop):
     :param prop: the given property
 
     """
+    lines_added = 0
+    
     for (directory, _, files) in os.walk(PATH + prop):
         for f in files:
             if f.endswith('.csv'):
@@ -246,6 +253,9 @@ def parse_csv(PATH, cursor, database, prop):
                                 prop, cursor, comment, category, line)
 
                         i = i + 1
+                        lines_added = lines_added + 1
+                        
+    print(lines_added, " lines added")
 
 
 def build_property(prop):

@@ -1,40 +1,41 @@
-SAE Handbook, Society of Automotive Engineers, Warrenddale, PA; Metals Handbook, American Society for Metals, Material Park, Ohio,													
-property	aliases	treatment	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles
-symbol	none		E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f
-unit		none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa
-1010		hot rolled	206.8	80.8	0.28	7800000	179	324		95			
-1010		cold rolled	206.8	80.8	0.28	7800000	303	365		105			
-1020		hot rolled	206.8	80.8	0.28	7800000	207	379		111			
-1020		cold rolled	206.8	80.8	0.28	7800000	393	469		131			
-1030		hot rolled	206.8	80.8	0.28	7800000	259	469		137			
-1030		normalized @ 900°C	206.8	80.8	0.28	7800000	345	517		149			
-1030		cold rolled	206.8	80.8	0.28	7800000	441	524		149			
-1030		quench & temper @ 538°C	206.8	80.8	0.28	7800000	517	669		255			
-1030		quench & temper @ 426°C	206.8	80.8	0.28	7800000	579	731		302			
-1030		quench & temper @ 204°C	206.8	80.8	0.28	7800000	648	848		495			
-1035		hot rolled	206.8	80.8	0.28	7800000	276	496		143			
-1035		cold rolled	206.8	80.8	0.28	7800000	462	552		163			
-1040		hot rolled	206.8	80.8	0.28	7800000	290	524		149			
-1040		normalized @ 900°C	206.8	80.8	0.28	7800000	372	593		170			
-1040		cold rolled	206.8	80.8	0.28	7800000	490	586		170			
-1040		quench & temper @ 650°C	206.8	80.8	0.28	7800000	434	634		192			
-1040		quench & temper @ 426°C	206.8	80.8	0.28	7800000	552	758		241			
-1040		quench & temper @ 204°C	206.8	80.8	0.28	7800000	593	779		262			
-1045		hot rolled	206.8	80.8	0.28	7800000	310	565		163			
-1045		cold rolled	206.8	80.8	0.28	7800000	531	627		179			
-1050		hot rolled	206.8	80.8	0.28	7800000	345	621		179			
-1050		normalized @ 900°C	206.8	80.8	0.28	7800000	427	745		217			
-1050		cold rolled	206.8	80.8	0.28	7800000	579	689		197			
-1050		quench & temper @ 650°C	206.8	80.8	0.28	7800000	538	717		235			
-1050		quench & temper @ 426°C	206.8	80.8	0.28	7800000	793	1089		444			
-1050		quench & temper @ 204°C	206.8	80.8	0.28	7800000	807	1124		514			
-1060		hot rolled	206.8	80.8	0.28	7800000	372	676		200			
-1060		normalized @ 900°C	206.8	80.8	0.28	7800000	421	772		229			
-1060		quench & temper @ 650°C	206.8	80.8	0.28	7800000	524	800		229			
-1060		quench & temper @ 426°C	206.8	80.8	0.28	7800000	669	965		277			
-1060		quench & temper @ 204°C	206.8	80.8	0.28	7800000	765	1076		311			
-1095		hot rolled	206.8	80.8	0.28	7800000	455	827		248			
-1095		normalized @ 900°C	206.8	80.8	0.28	7800000	496	1014					
-1095		quench & temper @ 650°C	206.8	80.8	0.28	7800000	552	896		269			
-1095		quench & temper @ 426°C	206.8	80.8	0.28	7800000	772	1213		363			
-1095		quench & temper @ 204°C	206.8	80.8	0.28	7800000	814	1262		375			
+SAE Handbook, Society of Automotive Engineers, Warrenddale, PA; Metals Handbook, American Society for Metals, Material Park, Ohio, Azo Materials azom.com															
+property	aliases	treatment	chemical formula	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles	Elongation at break
+symbol	none	none	none	E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f	epsilon
+unit		none	none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa	ratio
+1010		hot rolled	FeMnSPC	200	80	0.28	7870	179	324	12.2	95				0.28
+1010		cold rolled	FeMnSPC	200	80	0.28	7870	303	365	12.2	105				0.2
+1020		hot rolled	FeMnSPC	205	80	0.28	7870	207	379	11.7	111				0.25
+1020		cold rolled	FeMnSPC	205	80	0.28	7870	350	420	11.7	131				0.15
+1030		hot rolled	FeMnSPC	200	80	0.28	7850	259	469	11.7	137				0.2
+1030		normalized @ 900°C	FeMnSPC	200	80	0.28	7850	345	517	11.7	149				0.32
+1030		cold rolled	FeMnSPC	200	80	0.28	7850	441	524	11.7	149				0.12
+1030		quench & temper @ 538°C	FeMnSPC	200	80	0.28	7850	517	669	11.7	255				0.28
+1030		quench & temper @ 426°C	FeMnSPC	200	80	0.28	7850	579	731	11.7	302				0.23
+1030		quench & temper @ 204°C	FeMnSPC	200	80	0.28	7850	648	848	11.7	495				0.17
+1035		hot rolled	FeMnSPC	200	80	0.28	7850	276	496	11	143				0.18
+1035		cold rolled	FeMnSPC	200	80	0.28	7850	462	552	11	163				0.12
+1040		hot rolled	FeMnSPC	200	80	0.28	7845	290	524	11.3	149				0.18
+1040		normalized @ 900°C	FeMnSPC	200	80	0.28	7845	372	593	11.3	170				0.28
+1040		cold rolled	FeMnSPC	200	80	0.28	7845	490	586	11.3	170				0.12
+1040		quench & temper @ 650°C	FeMnSPC	200	80	0.28	7845	434	634	11.3	192				0.29
+1040		quench & temper @ 426°C	FeMnSPC	200	80	0.28	7845	552	758	11.3	241				0.21
+1040		quench & temper @ 204°C	FeMnSPC	200	80	0.28	7845	593	779	11.3	262				0.19
+1045		hot rolled	FeMnSPC	200	80	0.28	7870	310	565		163				0.16
+1045		cold rolled	FeMnSPC	200	80	0.28	7870	531	627		179				0.12
+1050		hot rolled	FeMnSPC	200	80	0.28	7850	345	621		179				0.15
+1050		normalized @ 900°C	FeMnSPC	200	80	0.28	7850	427	745		217				0.2
+1050		cold rolled	FeMnSPC	200	80	0.28	7850	579	689		197				0.1
+1050		quench & temper @ 650°C	FeMnSPC	200	80	0.28	7850	538	717		235				0.28
+1050		quench & temper @ 426°C	FeMnSPC	200	80	0.28	7850	793	1089		444				0.13
+1050		quench & temper @ 204°C	FeMnSPC	200	80	0.28	7850	807	1124		514				0.09
+1060		hot rolled	FeMnSPC	200	80	0.28	7850	372	676	11	200				0.12
+1060		normalized @ 900°C	FeMnSPC	200	80	0.28	7850	421	772	11	229				0.18
+1060		quench & temper @ 650°C	FeMnSPC	200	80	0.28	7850	524	800	11	229				0.23
+1060		quench & temper @ 426°C	FeMnSPC	200	80	0.28	7850	669	965	11	277				0.17
+1060		quench & temper @ 204°C	FeMnSPC	200	80	0.28	7850	765	1076	11	311				0.14
+1095		hot rolled	FeMnSPC	200	80	0.28	7850	455	827	11	248				0.1
+1095		cold drawn	FeMnSPC	200	80	0.28	7850	525	685	11	197				0.1
+1095		normalized @ 900°C	FeMnSPC	200	80	0.28	7850	496	1014	11					0.09
+1095		quench & temper @ 650°C	FeMnSPC	200	80	0.28	7850	552	896	11	269				0.21
+1095		quench & temper @ 426°C	FeMnSPC	200	80	0.28	7850	772	1213	11	363				0.12
+1095		quench & temper @ 204°C	FeMnSPC	200	80	0.28	7850	814	1262	11	375				0.1

@@ -1,0 +1,26 @@
+Machine Design Materials reference Issue, Penton Publishing, Cleveland, Ohio; Metal Handbook, ASM, Material Park, Ohio ; Azo Materials azom.com															
+property	aliases	treatment	chemical formula	modulus of elasticity	modulus of rigidity	Poisson's ratio	volumic mass	tensile yield strength at 0,2 %	ultimate tensile strength	thermal expansion coefficient	brinell hardness	Rockwell B hardness	Rockwell C hardness	Fatigue strength at 5E8 cycles	Elongation at break
+symbol	none	none	none	E	G	nu	rho	S_y	S_ut	alpha	HB	HRB	HRC	S_f	epsilon
+unit		none	none	GPa	GPa	dimensionless	kg/m³	MPa	MPa	E-6 °C^-1	HB	HRB	HRC	Mpa	dimensionless
+1340		annealed	FeMnCSiSP	200	80	0.28	7870	434	703	11.5	204				0.25
+1340		quench & temper	FeMnCSiSP	200	80	0.28	7870	752	862	11.5	250				0.21
+4027		annealed	FeMnCMoSiSP	200	80	0.28	7850	324	517		150				0.3
+4027		quench & temper	FeMnCMoSiSP	200	80	0.28	7850	779	910		264				0.12
+4130	Chromoly	annealed @ 788°C	FeCrMnCSiMoSP	200	80	0.28	7850	359	558		156				0.28
+4130	Chromoly	normalized @ 900°C	FeCrMnCSiMoSP	200	80	0.28	7850	434	669		197				0.25
+4130	Chromoly	quench & temper @ 650°C	FeCrMnCSiMoSP	200	80	0.28	7850	703	814		245				0.22
+4130	Chromoly	quench & temper @ 425°C	FeCrMnCSiMoSP	200	80	0.28	7850	1193	1282		380				0.13
+4130	Chromoly	quench & temper @ 205°C	FeCrMnCSiMoSP	200	80	0.28	7850	1462	1627		410				0.1
+4140		annealed @ 788°C	FeCrMnCSiMoSP	200	80	0.28	7850	421	655	12.2	197				0.26
+4140		normalized @ 900°C	FeCrMnCSiMoSP	200	80	0.28	7850	655	1020	12.2	302				0.18
+4140		quench & temper @ 650°C	FeCrMnCSiMoSP	200	80	0.28	7850	655	758	12.2	230				0.22
+4140		quench & temper @ 425°C	FeCrMnCSiMoSP	200	80	0.28	7850	1138	1248	12.2	370				0.13
+4140		quench & temper @ 205°C	FeCrMnCSiMoSP	200	80	0.28	7850	1641	1772	12.2	510				0.08
+4340		quench & temper @ 650°C	FeNiCrMnCSiSP	200	80	0.28	7850	855	965	12.3	280				0.19
+4340		quench & temper @ 540°C	FeNiCrMnCSiSP	200	80	0.28	7850	1076	1172	12.3	360				0.13
+4340		quench & temper @ 425°C	FeNiCrMnCSiSP	200	80	0.28	7850	1365	1469	12.3	430				0.1
+4340		quench & temper @ 205°C	FeNiCrMnCSiSP	200	80	0.28	7850	1586	1724	12.3	486				0.1
+6150		annealed	FeCrMnSiVSP	200	80	0.28	7850	407	662		192				0.23
+6150		quench & temper	FeCrMnSiVSP	200	80	0.28	7850	1020	1082		314				0.16
+8740		annealed	FeMnNiCrCMoSiP	200	80	0.28	7850	414	655		190				0.25
+8740		quench & temper	FeMnNiCrCMoSiP	200	80	0.28	7850	917	993		288				0.18
