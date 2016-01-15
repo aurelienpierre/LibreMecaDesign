@@ -1,5 +1,5 @@
-LibreMechanicalDesign.core package
-##################################
+LibreMecaDesign.core package
+############################
 
 Submodules
 **********

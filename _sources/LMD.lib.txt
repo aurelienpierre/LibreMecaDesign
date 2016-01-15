@@ -1,10 +1,10 @@
-LibreMechanicalDesign.lib package
-#################################
+LibreMecaDesign.lib package
+###########################
 
 Submodules
 **********
 
-LibreMechanicalDesign.lib.build module
+lib.build module
 **************************************
 
 .. automodule:: lib.build
@@ -12,7 +12,7 @@ LibreMechanicalDesign.lib.build module
     :undoc-members:
     :show-inheritance:
 
-LibreMechanicalDesign.lib.geometry module
+lib.geometry module
 *****************************************
 
 .. automodule:: lib.geometry
@@ -20,7 +20,7 @@ LibreMechanicalDesign.lib.geometry module
     :undoc-members:
     :show-inheritance:
 
-LibreMechanicalDesign.lib.materials module
+lib.materials module
 ******************************************
 
 .. automodule:: lib.materials

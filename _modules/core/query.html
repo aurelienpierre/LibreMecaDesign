@@ -1,56 +1,155 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>core.query &mdash; LibreMecaDesign dev documentation</title>
-    
-    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     'dev',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="LibreMecaDesign dev documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
-  </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.query &mdash; LibreMecaDesign dev documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="LibreMecaDesign dev documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> LibreMecaDesign
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DEV.html">LibreMechanicalDesign : Developpers reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../LMD.html">LibreMecaDesign package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">LibreMecaDesign</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>core.query</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <h1>Source code for core.query</h1><div class="highlight"><pre>
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Provide the base-level search class (layer 0) to fetch values from the database \</span>
 <span class="sd">and store them into a class</span>
+
+<span class="sd">:example:</span>
+<span class="sd">    a = search(&#39;S_ut &gt; 500 MPa AND S_y &lt; 400 MPa AND normalized OR temper | MED:S_y&#39;) </span>
+<span class="sd">    print(a.unique_result[&#39;S_ut&#39;])</span>
+<span class="sd">:return:  a list of relevant results. Each result is a dictionary containing \</span>
+<span class="sd">the properties. If an optimization keyword was given, the object self.unique_result \</span>
+<span class="sd">return the best matching result of the list.</span>
+
+<span class="sd">Usage :</span>
+
+<span class="sd">*    the syntax is similar to Google search</span>
+<span class="sd">*    text parameters are fetched in all text properties (name, category, etc.)</span>
+<span class="sd">*    to retrieve numeric values for properties, use a SQL syntax such as PROPERTY =&lt;&gt; value</span>
+<span class="sd">*    give every value with its unit</span>
+<span class="sd">*    if you want only one result, give an optimization keyword with the property to optimize\</span>
+<span class="sd">like :  | KEYWORD : parameter. </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -59,7 +158,6 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">aliases</span>
-
 
 <span class="n">CURRENT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
 <span class="n">PARENT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">CURRENT_PATH</span><span class="p">)</span>
@@ -70,6 +168,40 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handle the queries</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="search.escape_optimization"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.escape_optimization">[docs]</a>    <span class="k">def</span> <span class="nf">escape_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for an optimization keyword and store the condition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s">&#39;|&#39;</span> <span class="ow">in</span> <span class="n">query_string</span><span class="p">:</span>
+            <span class="n">optim_split</span> <span class="o">=</span> <span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+            <span class="n">keyword</span> <span class="o">=</span> <span class="n">optim_split</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">optim_split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">query_string</span></div>
+
+<div class="viewcode-block" id="search.prepare_query"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.prepare_query">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Split a query string into keywords and interpretate boolean operators</span>
+
+<span class="sd">        :param query_string: unformatted string</span>
+
+<span class="sd">        :return: nested list of lists of terms to search alternatively</span>
+
+<span class="sd">            * the top level list contains the OR arguments</span>
+<span class="sd">            * the nested lists contain the AND argument</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">OR_split</span> <span class="o">=</span> <span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;OR&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">OR_split</span><span class="p">:</span>
+            <span class="n">AND_split</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;AND&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AND_split</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="search.remove_units"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.remove_units">[docs]</a>    <span class="k">def</span> <span class="nf">remove_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_string</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -96,28 +228,6 @@
 
         <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="search.prepare_query"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.prepare_query">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Split a query string into keywords and interpretate boolean operators</span>
-
-<span class="sd">        :param query_string: unformatted string</span>
-
-<span class="sd">        :return: nested list of lists of terms to search alternatively</span>
-
-<span class="sd">            * the top level list contains the OR arguments</span>
-<span class="sd">            * the nested lists contain the AND argument</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">OR_split</span> <span class="o">=</span> <span class="n">query_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;OR&#39;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">OR_split</span><span class="p">:</span>
-            <span class="n">AND_split</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;AND&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AND_split</span><span class="p">)</span></div>
-
-
 <div class="viewcode-block" id="search.clean_query"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.clean_query">[docs]</a>    <span class="k">def</span> <span class="nf">clean_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queries</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Shortcut to loop remove_unit element by element in the terms list or nested list</span>
@@ -129,6 +239,12 @@
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
                     <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_units</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
         <span class="k">return</span></div>
+    
+<div class="viewcode-block" id="search.text_request"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.text_request">[docs]</a>    <span class="k">def</span> <span class="nf">text_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="k">return</span></div>
+    
+<div class="viewcode-block" id="search.value_request"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.value_request">[docs]</a>    <span class="k">def</span> <span class="nf">value_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="k">return</span></div>
 
 <div class="viewcode-block" id="search.build_request"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.build_request">[docs]</a>    <span class="k">def</span> <span class="nf">build_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -136,6 +252,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">request</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
         <span class="n">equation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&quot;[\=\&gt;\&lt;]+&quot;</span><span class="p">)</span>
+        
+        
+        
         <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="p">:</span>  <span class="c"># OR statements</span>
             <span class="n">last</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">sub_element</span> <span class="ow">in</span> <span class="n">element</span><span class="p">:</span>  <span class="c"># AND statements</span>
@@ -165,7 +284,7 @@
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="o">!=</span> <span class="n">last</span><span class="p">:</span>
                 <span class="n">request</span> <span class="o">=</span> <span class="n">request</span> <span class="o">+</span> <span class="s">&#39; OR &#39;</span>
-
+        <span class="k">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">request</span></div>
 
 <div class="viewcode-block" id="search.process_query"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.process_query">[docs]</a>    <span class="k">def</span> <span class="nf">process_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -190,59 +309,98 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
                 <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span></div>
 
+<div class="viewcode-block" id="search.optimize"><a class="viewcode-back" href="../../LMD.core.html#core.query.search.optimize">[docs]</a>    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">arranged_list</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> 
+                         <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">cond</span><span class="p">:</span> <span class="n">cond</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
+        <span class="k">if</span> <span class="s">&quot;MIN&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_result</span> <span class="o">=</span> <span class="n">arranged_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s">&quot;MAX&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_result</span> <span class="o">=</span> <span class="n">arranged_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s">&quot;MED&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">med</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">arranged_list</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_result</span> <span class="o">=</span> <span class="n">arranged_list</span><span class="p">[</span><span class="n">med</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;Optimization keyword not supported&quot;</span><span class="p">)</span></div>
+            
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_string</span><span class="p">):</span>
+        <span class="n">query_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">escape_optimization</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prepare_query</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clean_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">terms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">process_query</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_query</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span></div>
         <span class="c"># TODO! add units</span>
-        <span class="c"># TODO! add filters to keep only one value (max, min)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">q_string</span> <span class="o">=</span> <span class="s">&#39;steel AND S_y &gt; 400 MPa AND S_ut &gt; 500 MPa AND temper OR rolled&#39;</span>
+    <span class="c"># Debug stuff</span>
+    <span class="n">q_string</span> <span class="o">=</span> <span class="s">&#39;S_ut &gt; 500 MPa AND S_y &lt; 400 MPa AND normalized OR temper | MED:S_y&#39;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">q_string</span><span class="p">)</span>
     
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">&#39;category&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span><span class="n">item</span><span class="p">[</span><span class="s">&#39;S_ut&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;treatment&#39;</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">&#39;category&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span><span class="n">item</span><span class="p">[</span><span class="s">&#39;S_ut&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;S_y&#39;</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="s">&#39;treatment&#39;</span><span class="p">])</span>
+        
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">condition</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">unique_result</span><span class="p">)</span>
 </pre></div>
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">LibreMecaDesign dev documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
         &copy; Copyright 2015, Aurélien PIERRE.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.
-    </div>
-  </body>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

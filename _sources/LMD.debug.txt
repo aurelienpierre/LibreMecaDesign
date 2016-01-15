@@ -1,4 +1,4 @@
-LibreMechanicalDesign.debug package
+LibreMecaDesign.debug package
 ###################################
 
 Submodules

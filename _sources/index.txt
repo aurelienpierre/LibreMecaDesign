@@ -3,10 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. |LibreMecaDesign| LMD
-
 Welcome to LibreMecaDesign documentation!
-###############################################
+#########################################
 
 LibreMecaDesign is a multi-level library to solve mechanical engineering problems and to help engineers to choose materials for their design. It will :
 

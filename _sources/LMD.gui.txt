@@ -1,5 +1,5 @@
-LibreMechanicalDesign.gui package
-#################################
+LibreMecaDesign.gui package
+###########################
 
 gui.start module
 ****************
