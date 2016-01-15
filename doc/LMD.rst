@@ -1,5 +1,5 @@
-LibreMechanicalDesign package
-#############################
+LibreMecaDesign package
+#######################
 
 Subpackages
 ***********

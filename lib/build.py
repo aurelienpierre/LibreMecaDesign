@@ -11,6 +11,8 @@ Included data
 -------------
 
 * Carbon steel
+* Tool steel
+* Stainless steel
 
 Adding data
 -----------
@@ -22,6 +24,7 @@ For materials properties, data should include in this order :
 #. normalized name    
 #. aliases (commercial or usual names, comma separated)
 #. treatment (e.g. molded, rolled, normalized, etc.)
+#. chemical formula 
 #. modulus of elasticity (E, in GPa)
 #. modulus of rigidity (G, in GPa)
 #. Poisson's ratio (nu)
@@ -32,7 +35,8 @@ For materials properties, data should include in this order :
 #. brinell hardness
 #. Rockwell B hardness
 #. Rockwell C hardness
-#. Fatigue strength at 5E8 cycles (S_f, in MPa)
+#. fatigue strength at 5E8 cycles (S_f, in MPa)
+#. elongation at break (epsilon, ratio)
 
 A ``.csv`` template is provided in the ``lib`` root.
 

@@ -1,5 +1,5 @@
-LibreMechanicalDesign.modules package
-#####################################
+LibreMecaDesign.modules package
+###############################
 
 Module contents
 ***************
